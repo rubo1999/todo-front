@@ -6,7 +6,7 @@ const inputText = document.querySelector('form input[type="text"]');
 //new Tarea(1, "aprender",false, contenedorTareas)
 //Carga inicial de los datos
 
-fetch("http://localhost:4000/tareas")
+fetch("https://api-todo-top.onrender.com/tareas")
 .then(respuesta => respuesta.json())
 .then(tareas => {
     tareas.forEach(({id,tarea,terminada}) => {
@@ -21,7 +21,7 @@ formulario.addEventListener("submit", async evento => {
 
         let tarea = inputText.value.trim();
 
-        let {id,error} = await fetch("http://localhost:4000/tareas/nueva",{
+        let {id,error} = await fetch("https://api-todo-top.onrender.com/tareas/nueva",{
             method : "POST",
             body : JSON.stringify({tarea}),
             headers : {

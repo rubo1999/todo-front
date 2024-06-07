@@ -59,7 +59,7 @@ class Tarea{
 
 
     borrarTarea(){
-        fetch(`http://localhost:4000/tareas/borrar/${this.id}`,{
+        fetch(`https://api-todo-top.onrender.com/tareas/borrar/${this.id}`,{
             method : "DELETE"
         })
         .then(respuesta => respuesta.json())
@@ -74,7 +74,7 @@ class Tarea{
 
     toggleEstado(){
         return new Promise((ok,ko)=> {
-            fetch(`http://localhost:4000/tareas/actualizar/${this.id}/2`,{
+            fetch(`https://api-todo-top.onrender.com/tareas/actualizar/${this.id}/2`,{
                 method : "PUT"
             })
             .then(respuesta => respuesta.json())
@@ -91,7 +91,7 @@ class Tarea{
             //intentar guardar los cambios
             let posibleTexto = this.DOM.children[1].value.trim();
             if(posibleTexto != "" && posibleTexto != this.texto){
-                let {error} = await fetch(`http://localhost:4000/tareas/actualizar/${this.id}/1`,{
+                let {error} = await fetch(`https://api-todo-top.onrender.com/tareas/actualizar/${this.id}/1`,{
                     method : "PUT",
                     body : JSON.stringify({tarea: posibleTexto}),
                     headers : {
